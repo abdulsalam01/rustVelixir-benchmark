@@ -158,7 +158,7 @@ Differences in metrics are **expected and intentional**.
   * OS
   * hardware
   * compiler / OTP version
-* Do **not** use Fibonacci as a real-world benchmark
+* Use Fibonacci alongwith other tests as a real-world benchmark
 * Use this repo to **learn runtime characteristics**
 
 ---
