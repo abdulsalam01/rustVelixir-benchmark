@@ -66,7 +66,7 @@ Measure:
 ```bash
 cd elx
 mix deps.get
-mix run
+N=10 mix run
 ```
 
 ### What You’ll See
@@ -106,7 +106,7 @@ Measure:
 
 ```bash
 cd rsx
-cargo run --release
+N=10 cargo run --release
 ```
 
 > Use `--release` for realistic performance results.
