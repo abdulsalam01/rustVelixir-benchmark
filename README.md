@@ -66,7 +66,7 @@ Measure:
 ```bash
 cd elx
 mix deps.get
-N=10 mix run
+N=10 mix run -e "Elx.run()
 ```
 
 ### What You’ll See
