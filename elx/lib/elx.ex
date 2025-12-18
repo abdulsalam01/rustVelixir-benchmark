@@ -1,7 +1,9 @@
 defmodule Elx do
-  def fibo(0, words), do: { 0, words }
-  def fibo(1, words), do: { 1, words }
+  def fibo(0, words), do: {0, words}
+  def fibo(1, words), do: {1, words}
   def fibo(n, words) when n >= 2 do
+    if n > 30, do: raise("N too large")
+
     new_words = words <> "abcdefghijklmnopqrstuvwxyz "
     {a, words1} = fibo(n - 2, new_words)
     {b, words2} = fibo(n - 1, words1)
@@ -10,7 +12,8 @@ defmodule Elx do
   end
 
   def main do
-    fibo(10, "")
+    n = System.get_env("N", "10") |> String.to_integer()
+    fibo(n, "")
   end
 end
 
@@ -24,7 +27,7 @@ proc_mem_before = Process.info(self(), :memory)
 sched_before = :erlang.statistics(:scheduler_wall_time)
 
 # CORE
-{time_us, {val, word}} =
+{time_us, {val, _word}} =
   :timer.tc(fn ->
     Elx.main()
   end)
@@ -35,7 +38,6 @@ sched_after = :erlang.statistics(:scheduler_wall_time)
 
 # RESULTS
 IO.puts("value=#{val}")
-IO.puts("words=#{word}")
 
 IO.puts("\n--- METRICS ---")
 IO.puts("time_us=#{time_us} in microseconds")
