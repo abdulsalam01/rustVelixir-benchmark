@@ -8,6 +8,10 @@ defmodule Elx do
 
     {a + b, words2}
   end
+
+  def main do
+    fibo(10, "")
+  end
 end
 
 # --------- METRICS WRAPPER ---------
@@ -22,7 +26,7 @@ sched_before = :erlang.statistics(:scheduler_wall_time)
 # CORE
 {time_us, {val, word}} =
   :timer.tc(fn ->
-    Elx.fibo(10, "")
+    Elx.main()
   end)
 
 mem_after = :erlang.memory()
